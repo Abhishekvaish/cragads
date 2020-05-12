@@ -1,0 +1,28 @@
+{% extends 'myapplist/base.html' %}
+
+{% block content %}
+
+<h2 class="center">{{search|title}}</h2>
+
+<div class="row">
+	{% for topic in topics %}
+	<div class="col s4">
+		<div class="card">
+	        <div class="card-image">
+	          <img src="{{topic.2}}">
+	          <span class="card-title">Title </span>
+	        </div>
+	        <div class="card-content">
+	          <p>{{topic.0}}</p>
+	        </div>
+	        <div class="card-action">
+	          <a href="{{topic.1}}">This is a link</a>
+	        </div>
+		</div>
+	</div>
+	{% endfor %}
+
+</div>
+
+
+{% endblock %}
