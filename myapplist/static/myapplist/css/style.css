@@ -7,3 +7,37 @@
     height: 200px; /* Your height here */
     overflow: hidden;
 }
+::-webkit-input-placeholder {
+   text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   text-align: center;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-align: center;  
+}
+
+:-ms-input-placeholder {  
+   text-align: center; 
+}
+input{
+   text-align:center;
+}
+.georgia{
+	font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 27px;
+}
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: #000;
+}
+

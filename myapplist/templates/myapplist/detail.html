@@ -1,0 +1,38 @@
+{% extends 'myapplist/base.html' %}
+
+{% block search %}
+	<br/><br/><br/>
+	<form action="{% url 'myapplist:new_search'  %}" method="post" class="row center">
+			{% csrf_token  %}
+			<input type="text" name="search" placeholder="search craglist for anything " class="col s10" >
+			
+			<button class="btn waves-effect waves-light col s2" type="submit" name="action">
+				Search<i class="material-icons right" >search</i>
+			</button>
+	</form>	
+{% endblock	 %}
+
+{% block content %}
+<br/>
+<br/>
+<div>
+	<h2 style="font-family: Georgia, Times, 'Times New Roman', serif;" >{{title|title}}</h2>	
+</div>
+<div class="row">
+	<p class="georgia">
+		{% if imgsrc %}
+		<img src="{{imgsrc}}" align="left"  style="padding-right: 40px;" width="500" /> 
+		{% endif %}
+		{{body_text}} 
+	</p>
+</div>
+
+
+<br/>
+<p align="right" font= >{{date}}</p>
+<br/>
+
+
+
+
+{% endblock %}

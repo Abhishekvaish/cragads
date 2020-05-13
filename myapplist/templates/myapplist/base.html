@@ -8,24 +8,40 @@
     <link rel="stylesheet" href="{% static 'myapplist/css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8806ff8ba0.js" crossorigin="anonymous"></script>
 </head>
 
 
 <body>
 
 
-	<nav>
-		<div class="container nav-wrapper">
-        <a href="/" class="brand-logo">cragads</a>
+	<nav class="blue">
+		<div class="container nav-wrapper" >
+        <a href=" {% url 'myapplist:base' %} " class="brand-logo">cragads</a>
         <ul id="nav-mobile" class="right">
-            <li><a href="/">Home</a></li>
+            <li><a href="">Home</a></li>
+            <li><a href="https://www.linkedin.com/in/abhishek-vaish-b3195817a/" ><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="https://github.com/Abhishekvaish"><i class="fab fa-github"></i></a></li>
+            <li><a href="https://twitter.com/Abhishekvaish40"><i class="fab fa-twitter"></i></a></li>
         </ul>
     </div>
 	</nav>
 
-
 	<div class="container">
-	    <h1 style="text-align: center">What do you want to search for on cragads List?</h1>
+		{% block search %}
+
+	    <h2 style="text-align: center">What do you want to search for on cragads List?</h2>
+	    <br/><br/>
+	    <form action="{% url 'myapplist:new_search'  %}" method="post" class="center">
+			{% csrf_token  %}
+			<input type="text" name="search" placeholder="search craglist for job, course, products etc" >
+			<br/><br/>
+			<button class="btn waves-effect waves-light " type="submit" name="action">
+				Search<i class="material-icons right" >search</i>
+			</button>
+		</form>
+		<br/><br/><br/><br/>
+
 	    <div class="row">
 	        <div class="col s4 center">
 	            <!-- Promo Content 1 goes here -->
@@ -37,8 +53,8 @@
 	        <div class="col s4 center">
 	            <!-- Promo Content 2 goes here -->
 	                <i class="large material-icons" style="color: orange">camera</i>
-	                <p>Filter your searches</p>
-	                <p class="light center">We built in functionality to filter based on pricing.</p>
+	                <p>User friendly </p>
+	                <p class="light center">Very Simple and easy to use .</p>
 	        </div>
 
 	        <div class="col s4 center">
@@ -49,21 +65,36 @@
 	        </div>
 	    </div>
 
-	    
-	   	<form action="{% url 'myapplist:new_search'  %}" method="post">
-			{% csrf_token  %}
-			<input type="text" name="search" placeholder="search">
-			<button class="btn waves-effect waves-light" type="submit" name="action">
-				Submit<i class="material-icons right" >send</i>
-			</button>
-		</form>
+	    {% endblock %}
+
 
 	    {% block content %}
 
 	    {% endblock content %}
 	</div>
 
-
+	<footer class="page-footer blue">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Cragads</h5>
+                <p class="grey-text text-lighten-4">A fast craigslist web scraper with a beautiful GUI..</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Contact</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=abhishek953566936222@gmail.com&tf=1">abhishek953566936222@gmail.com</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2020 Copyright Text
+             <a class="grey-text text-lighten-4 right" href="#!">This website is made with Django</a>
+            </div>
+          </div>
+    </footer>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>

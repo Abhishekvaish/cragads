@@ -11,6 +11,10 @@ urlpatterns = [
 	# www.mysite.com/new_search
 	path('new_search', views.new_search,name='new_search'),
 
-	path('query?=<str:query>', views.index,name='index'),
+	# www.mysite.com/topic%20name
+	path('query?=<str:query>/', views.index,name='index'),
+
+	# www.mysite.com/topicc%20name/2
+	path('<str:query>/', views.detail,name='detail'),
 
 ]

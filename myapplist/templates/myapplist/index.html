@@ -1,5 +1,19 @@
 {% extends 'myapplist/base.html' %}
 
+{% block search %}
+	<br/><br/><br/>
+	<form action="{% url 'myapplist:new_search'  %}" method="post" class="row center">
+			{% csrf_token  %}
+			<input type="text" name="search" placeholder="search craglist for anything " class="col s10" >
+			
+			<button class="btn waves-effect waves-light col s2" type="submit" name="action">
+				Search<i class="material-icons right" >search</i>
+			</button>
+	</form>	
+{% endblock	 %}
+
+
+
 {% block content %}
 
 <h2 class="center">{{search|title}}</h2>
@@ -10,19 +24,17 @@
 		<div class="card">
 	        <div class="card-image">
 	          <img src="{{topic.2}}">
-	          <span class="card-title">Title </span>
 	        </div>
 	        <div class="card-content">
 	          <p>{{topic.0}}</p>
 	        </div>
 	        <div class="card-action">
-	          <a href="{{topic.1}}">This is a link</a>
+	          <a href="{% url 'myapplist:detail' topic.1 %}">View Full article</a>
 	        </div>
 		</div>
 	</div>
 	{% endfor %}
 
 </div>
-
 
 {% endblock %}
