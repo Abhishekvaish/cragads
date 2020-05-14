@@ -23,13 +23,20 @@
 		{% if imgsrc %}
 		<img src="{{imgsrc}}" align="left"  style="padding-right: 40px;" width="500" /> 
 		{% endif %}
+		{% autoescape off %}
 		{{body_text}} 
+		{% endautoescape %}
 	</p>
+	<ul type="disc">	
+		{% for n in notices %}
+		 <li style="font-family: Georgia, Times, 'Times New Roman', serif;" > {{n}}</li>
+		{% endfor %}
+	</ul>
 </div>
 
 
 <br/>
-<p align="right" font= >{{date}}</p>
+<p align="right"  >{{date}}</p>
 <br/>
 
 

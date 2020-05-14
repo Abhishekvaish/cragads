@@ -66,7 +66,11 @@ def detail(request,query):
 	date = soup.find('p',{'id':'display-date'}).get_text()
 	date = space_remover.sub(" ",date)
 
-	body_text = soup.find('section',{'id':'postingbody'}).get_text().split('\n\n\n')[1]
+	body_text = soup.find('section',{'id':'postingbody'}).get_text()[30:]
+	body_text = re.sub(r'(https?://\S+)', r'<a href="\1" target="blank">\1</a>', body_text)
+
+	notices = [t.get_text() for t in soup.find('ul',{'class':'notices'}).find_all('li')]
+
 
 	imgsrc = None
 	if soup.find('div',{'class':'gallery'}):
@@ -77,6 +81,7 @@ def detail(request,query):
 		'date':date,
 		'body_text':body_text,
 		'imgsrc':imgsrc,
+		'notices':notices,
 	}
 
 	return render(request, 'myapplist/detail.html',context=context)
