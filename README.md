@@ -1,4 +1,4 @@
-# [cragads](https://stormy-shore-76327.herokuapp.com/)
+# [cragads](https://cragads.herokuapp.com/)
 ### A website for scraping craglist  
 This website **cragads** is made with django framework that uses Beautiful Soup to scrap content from the craglist and provide it in a very 
 nice and simple way for its users to gain information.
